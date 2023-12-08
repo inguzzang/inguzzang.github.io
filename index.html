@@ -32,51 +32,61 @@
     // 핀 추가 예제
     var markerPosition  = new kakao.maps.LatLng(37.567461, 126.939073); 
     var marker = new kakao.maps.Marker({
-      position: markerPosition
+      position: markerPosition,
+      content: '연희관 흡연구역'
     });
     marker.setMap(map);
       var markerPosition  = new kakao.maps.LatLng(37.564002, 126.936974); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '연희관 흡연구역'
+      content: '중앙도서관 흡연구역'
     });
     marker.setMap(map);
       var markerPosition  = new kakao.maps.LatLng(37.562219, 126.935683); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '중앙도서관 흡연구역'
+      content: '공학관 흡연부스'
     });
     marker.setMap(map);
       var markerPosition  = new kakao.maps.LatLng(37.561998, 126.935207); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '공학관 흡연부스'
+      content: '2공학관과 3공학관 사이 흡연구역'
     });
     var markerPosition  = new kakao.maps.LatLng(37.561323, 126.935743); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '2공학관과 3공학관 사이 흡연구역'
+      content: '1공학관 흡연구역'
     });
     marker.setMap(map);
       
       var markerPosition  = new kakao.maps.LatLng(37.560824, 126.935499); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '1공학관 흡연구역'
+      content: '공학원 흡연구역'
     });
     marker.setMap(map);
       var markerPosition  = new kakao.maps.LatLng(37.563016, 126.933467); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '공학원 흡연구역'
+      content: '대운동장 흡연구역'
     });
     marker.setMap(map);
     var markerPosition  = new kakao.maps.LatLng(37.561664, 126.941321); 
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      text: '세브란스 흡연구역'
+      content: '세브란스 흡연구역'
     });
     marker.setMap(map);
+    
+    var infowindow = new kakao.maps.InfoWindow({
+        content: markers[i].content,
+      });
+
+      kakao.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, this); // 해당 마커에 인포윈도우 표시
+      });
+    }
   </script>
 </body>
 </html>
