@@ -5,11 +5,11 @@
   <title>Yonsei Smoking</title>
   <style>
     html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
     #map {
       width: 100%;
       height: 100%;
@@ -29,67 +29,57 @@
 
     var map = new kakao.maps.Map(container, options);
 
-    // 핀 추가 예제
-    var markerPosition  = new kakao.maps.LatLng(37.567461, 126.939073); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '연희관 흡연구역'
-    });
-    marker.setMap(map);
-      var markerPosition  = new kakao.maps.LatLng(37.564002, 126.936974); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '중앙도서관 흡연구역'
-    });
-    marker.setMap(map);
-      var markerPosition  = new kakao.maps.LatLng(37.562219, 126.935683); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '공학관 흡연부스'
-    });
-    marker.setMap(map);
-      var markerPosition  = new kakao.maps.LatLng(37.561998, 126.935207); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '2공학관과 3공학관 사이 흡연구역'
-    });
-    var markerPosition  = new kakao.maps.LatLng(37.561323, 126.935743); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '1공학관 흡연구역'
-    });
-    marker.setMap(map);
-      
-      var markerPosition  = new kakao.maps.LatLng(37.560824, 126.935499); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '공학원 흡연구역'
-    });
-    marker.setMap(map);
-      var markerPosition  = new kakao.maps.LatLng(37.563016, 126.933467); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '대운동장 흡연구역'
-    });
-    marker.setMap(map);
-    var markerPosition  = new kakao.maps.LatLng(37.561664, 126.941321); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      content: '세브란스 흡연구역'
-    });
-    marker.setMap(map);
-    
-    var infowindow = new kakao.maps.InfoWindow({
+    // 마커와 인포윈도우 추가 예제
+    var markers = [
+      {
+        position: new kakao.maps.LatLng(37.567461, 126.939073),
+        content: '연희관 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.564002, 126.936974),
+        content: '중앙도서관 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.562219, 126.935683),
+        content: '공학관 흡연부스'
+      },
+      {
+        position: new kakao.maps.LatLng(37.561998, 126.935207),
+        content: '2공학관과 3공학관 사이 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.561323, 126.935743),
+        content: '1공학관 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.560824, 126.935499),
+        content: '공학원 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.563016, 126.933467),
+        content: '대운동장 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.561664, 126.941321),
+        content: '세브란스 흡연구역'
+      }
+    ];
+
+    for (var i = 0; i < markers.length; i++) {
+      var marker = new kakao.maps.Marker({
+        position: markers[i].position,
+      });
+      marker.setMap(map);
+
+      var infowindow = new kakao.maps.InfoWindow({
         content: markers[i].content,
       });
 
+      // 마커 클릭 이벤트 처리
       kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.open(map, this); // 해당 마커에 인포윈도우 표시
+        infowindow.open(map, this);
       });
     }
   </script>
 </body>
 </html>
-
- 
-
