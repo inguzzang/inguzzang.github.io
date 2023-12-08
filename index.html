@@ -6,7 +6,94 @@
   <style>
     html, body {
       height: 100%;
+      margin: 0;<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Yonsei Smoking</title>
+  <style>
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0d95384b3aa7b126af6ec2782f16b16c"></script>
+  <script>
+    var container = document.getElementById('map');
+    var options = {
+      center: new kakao.maps.LatLng(37.565954, 126.938565),
+      level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+    // 마커 추가 예제
+    var markers = [
+      {
+        position: new kakao.maps.LatLng(37.567461, 126.939073),
+        content: '연희관 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.564002, 126.936974),
+        content: '중앙도서관 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.562219, 126.935683),
+        content: '공학관 흡연부스'
+      },
+      {
+        position: new kakao.maps.LatLng(37.561998, 126.935207),
+        content: '2공학관과 3공학관 사이 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.561323, 126.935743),
+        content: '1공학관 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.560824, 126.935499),
+        content: '공학원 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.563016, 126.933467),
+        content: '대운동장 흡연구역'
+      },
+      {
+        position: new kakao.maps.LatLng(37.561664, 126.941321),
+        content: '세브란스 흡연구역'
+      }
+    ];
+
+    for (var i = 0; i < markers.length; i++) {
+      var marker = new kakao.maps.Marker({
+        position: markers[i].position,
+        map: map
+      });
+
+      // 정보창 생성 및 설정
+      var infowindow = new kakao.maps.InfoWindow({
+        content: markers[i].content,
+        removable: true // 다른 마커를 클릭했을 때 현재 열린 정보창을 닫을 수 있도록 설정
+      });
+
+      // 마커 클릭 이벤트 처리
+      kakao.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, this); // 클릭한 마커의 위에 정보창을 열어 글씨를 표시
+      });
+    }
+  </script>
+</body>
+</html>
+
       padding: 0;
       overflow: hidden;
     }
