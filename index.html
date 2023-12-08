@@ -73,12 +73,21 @@
     ];
 
     for (var i = 0; i < markers.length; i++) {
-      // 커스텀 오버레이 추가
+      // 커스텀 오버레이 추가 (마커 아이콘으로 사용)
       var overlay = new kakao.maps.CustomOverlay({
         position: markers[i].position,
         content: '<div class="custom-overlay">' + markers[i].content + '</div>',
         zIndex: 1000 // 다른 마커와 겹치지 않도록 설정
       });
+
+      // 마커 추가
+      var marker = new kakao.maps.Marker({
+        position: markers[i].position,
+        image: overlay, // 커스텀 오버레이를 마커의 아이콘으로 사용
+      });
+      marker.setMap(map);
+
+      // 커스텀 오버레이를 지도에 추가
       overlay.setMap(map);
     }
   </script>
